@@ -8,7 +8,6 @@ cls
 :menu
 echo 메뉴 :
 echo 1. 라우팅 추가
-echo 2. 라우팅 삭제
 echo 0. 종료
 set /p menunumber=원하는 옵션을 선택하세요 : 
 
@@ -16,7 +15,6 @@ set /p menunumber=원하는 옵션을 선택하세요 :
 cls
 if %menunumber%==0 goto quit
 if %menunumber%==1 goto add
-if %menunumber%==2 goto routeDelete
 
 @REM route add 220.86.29.33 172.30.0.1 if 5 metric 100 -p
 :add
@@ -183,9 +181,6 @@ route add %routingIpAddress% %netmaskaddress% %gateway% if %interface% metric %m
 @REM 영구적 경로 추가
 :permanent
 route add %routingIpAddress% %netmaskaddress% %gateway% if %interface% metric %metric% -p
-
-:routeDelete
-route delete %routingIpAddress% %netmaskaddress% %gateway% if %interface% metric %metric% -p
 
 :quit
 echo 프로그램을 종료합니다.
